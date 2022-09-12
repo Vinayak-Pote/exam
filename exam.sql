@@ -32,9 +32,10 @@ date Date,
 charges int not null
 );
 
-
+#boarding details
+ select r.flight_id,COUNT(r.charges)as Passangers,date from reservation r  group by r.flight_id;
 # for customer details for a flight
  select * from customer where cust_id in (select cust_id from reservation where flight_id = 100);
 
 # for flight earnings
-select SUM(charges) from reservation where flight_id = 100; 
+select r.flight_id,SUM(r.charges)as earnings,f.orgin,f.desination from reservation r,flight f where r.flight_id=f.flight_id  group by r.flight_id ;

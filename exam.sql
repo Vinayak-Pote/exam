@@ -31,3 +31,10 @@ desination varchar(255) not null,
 date Date,
 charges int not null
 );
+
+
+# for customer details for a flight
+ select * from customer where cust_id in (select cust_id from reservation where flight_id = 100);
+
+# for flight earnings
+select SUM(charges) from reservation where flight_id = 100; 
